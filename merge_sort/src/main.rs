@@ -4,6 +4,7 @@ use rand::seq::SliceRandom;
 use rand::thread_rng;
 use std::fs::File;
 use std::io::{BufWriter, Write};
+use std::mem;
 use std::time::Instant;
 
 #[global_allocator]
@@ -74,13 +75,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let allocated_after = stats::allocated::read().unwrap();
         let memory_usage = allocated_after - allocated_before;
 
+        // Calculate the memory usage based on vector capacity
+        let vec_memory = mem::size_of_val(&arr) + arr.capacity() * mem::size_of::<i32>();
+
+        // Use the larger of the calculated memory usage and jemalloc measurement as an approximation.
+        let peak_memory = std::cmp::max(memory_usage, vec_memory);
+
         // Write the result to the CSV
         writeln!(
             writer,
             "{},{:.6},{:?}",
             size,
             duration.as_secs_f64(),
-            memory_usage
+            peak_memory
         )?;
     }
 
