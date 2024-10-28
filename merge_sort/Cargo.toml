@@ -1,0 +1,9 @@
+[package]
+name = "merge_sort"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rand = "0.8"
+jemallocator = "0.5.4"
+jemalloc-ctl = "0.5.4"
