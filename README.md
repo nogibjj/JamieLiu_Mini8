@@ -74,7 +74,7 @@ This command will produce a `comparison_results.csv` file, which compares the ti
 
 - **Memory Usage**:
   - Rust’s memory usage is much lower compared to Python. 
-  - The **Memory Savings (%)** demonstrates that memory savings range from `93.94%` for smaller inputs to around `76%` for larger ones. Rust remains consistently more memory-efficient 
+  - The **Memory Savings (%)** column demonstrates that memory savings range from `93.94%` for smaller inputs to around `76%` for larger ones. Rust remains consistently more memory-efficient 
 
 
 ## Binary Download Link
